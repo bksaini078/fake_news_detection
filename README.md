@@ -1,6 +1,7 @@
 # Fake News Detection
 
-
+Applying weakly supervised learning method to detect fake news article. 
+Applying Mean teacher and VAT algorithm in NLP and observing there result in the same.
 Training a neural network model from small size of high quality labeled dataset for fake news detection
 
 ## Getting Started
