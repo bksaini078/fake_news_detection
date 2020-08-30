@@ -1,3 +1,4 @@
+# author : Bhupender Kumar Saini
 import numpy as np 
 from tensorflow.keras.preprocessing import sequence
 import nltk
@@ -6,6 +7,7 @@ from gensim.models.fasttext import FastText
 import tensorflow as tf 
 import os
 
+# not using now as , this is our old approach of giving -1 label to unlabel data 
 def instant_noise(x_train, y_train, x_unlabel, n_ratio ):
     '''this function introduce noise in the training data for mean teacher model , 
     this function is used in calculating classification cost, user have to provide 
@@ -48,7 +50,7 @@ def instant_noise(x_train, y_train, x_unlabel, n_ratio ):
 
 
 
-
+# this is must for synonym , first user have to create embedding using this function and then other processing.
 def embedding_creation(args,full_article):
     word_punctuation_tokenizer = nltk.WordPunctTokenizer()
     word_tokenized_corpus = [word_punctuation_tokenizer.tokenize(sent) for sent in full_article]
