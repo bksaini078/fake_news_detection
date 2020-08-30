@@ -1,6 +1,11 @@
 # False Article Detection With Weakly Supervised Learning
 
-This contain the code for detecting the false article detection using weakly supervised learning
+This contain the code for detecting the false article detection using weakly supervised learning. 
+
+Becasue of Space issue and constraint, we are not able to load the many files such as embedding.model,glove,etc. The whole set up, we have kept in the Gdrive.Please see the link below.
+
+https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing
+
 
 ## Starting
 
@@ -38,27 +43,46 @@ Example
 `python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
 `
 Parameters of Datapreprocessing.py, default parameters have been give, if its needed it can be replaced by passing as parameters. 
+
 --inputPath  - input path for raw data (not processed)
+
 --outputPath -  output Path for processed data, which will intake by further models
+
 --labeldataname - file name for label data
+
 --unlabeldataname - file name for unlabel data
+
 --xTrain - npy xTrain file name
+
 --xTest - npy xTest file name
+
 --yTrain - npy yTrain file name
+
 --yTest - npy yTest file name
+
 --xUnlabel - npy xUnlabel file name
+
 
 Default values 
 
 --inputPath  - os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input1\\
+
 --outputPath -  os.path.abspath(os.getcwd())+"\\Data\\Input1\\
+
 --labeldataname - label.csv
+
 --unlabeldataname - unlabel.csv
+
 --xTrain - xtr_shuffled.npy
+
 --xTest - xte_shuffled.npy
+
 --yTrain - ytr_shuffled.npy
+
 --yTest - yte_shuffled.npy
+
 --xUnlabel - xun_shuffled.npy
+
 
 We have completed preprocessing and placed all those data files in respective folders such as Data\Input1,Data\Input2,Data\Input3,Data\Input4.
 From these folder, preprocessed data can take for further training the meanteacher and pseduolabel models
@@ -70,9 +94,13 @@ Please Go to folder path where code is available and run like below
 Mean Teacher, we have created different method of noises which can be called by parameters 
 
 --meanteacher  MT_syn_unlabel_diff (Mean teacher default )
+
 --meanteacher  MT_syn_noise_diff   (Mean teacher with synonym noise)
+
 --meanteacher  MT_dropout  ( Mean teacher with dropout)
+
 --meanteacher  MT_syn_dropout (Mean teacher with synonym and dropout)
+
 
 Once you call these method as parameter, automatically code regarding to this function and train the data in Data\Input1 folder (default)
 and the report will be placed in Data\Output1 folder (default) , default folders also changed by parameter passing
@@ -83,8 +111,11 @@ other parameters also available
 
 
 --ratio
+
 --threashold
+
 --inputPath  - input path to the train model ( /Users/tmp/Testing/)
+
 --outputPath - output path to place report and files ( /Users/tmp/Testing/)
 
 
@@ -126,10 +157,15 @@ Please Go to folder path where code is available and run like below
 Default values 
 
 --lr default=0.0001
+
 --epochs default=14
+
 --batchSize default=32
+
 --Thresh default=0.90
+
 --inputPath default=os path where you placed the code in system + \Data\Input1\
+
 --outputPath'os.path.here you placed the code in system + \Data\Output1\
 --xTrain default="xtr_shuffled.npy"
 --xTest default="xte_shuffled.npy"
