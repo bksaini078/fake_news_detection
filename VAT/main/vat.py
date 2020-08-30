@@ -270,7 +270,7 @@ if __name__ == '__main__':
 
     
     # for VAT
-    parser.add_argument('--lr', default=0.0001, type=int)
+    parser.add_argument('--lr', default=0.0001, type=float)
     parser.add_argument('--n_epochs', default=10, type=int)
     parser.add_argument('--batch_size', default=32, type=int)
     parser.add_argument('--emb_dim', default=300, type=int)
