@@ -38,7 +38,7 @@ def pseudo_main(args,x_train, y_train,x_test ,y_test, x_unlabel,vocab_size,batch
     if totalSamps % batch_size > 0:
       batches+=1
     unlabel_batch_size = x_unlabel.shape[0] //  batches
-    if unlabel_batch_size > 0 and epochs-epoc < 2:
+    if (unlabel_batch_size > 0) and (epochs-epoc < 2):
       if x_unlabel.shape[0] % unlabel_batch_size > 0:
         E = x_unlabel.shape[0] % unlabel_batch_size
         x_unlabel = x_unlabel[:-E]
