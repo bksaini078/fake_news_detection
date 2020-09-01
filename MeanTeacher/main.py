@@ -22,8 +22,8 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', default=64, type=int)
     parser.add_argument('--meanteacher', default='MT_syn_unlabel_diff', type=str)
     #for mean teacher 
-    parser.add_argument('--ratio', default=0.5, type=int)
-    parser.add_argument('--alpha', type=int, default=0.99)
+    parser.add_argument('--ratio', default=0.5, type=float)
+    parser.add_argument('--alpha', type=float, default=0.99)
     parser.add_argument('--maxlen', type=int, default=100)
     parser.add_argument('--dropout', type=float, default=0.2)
     parser.add_argument('--synonym_noise_b1', type=float, default=0.5)
