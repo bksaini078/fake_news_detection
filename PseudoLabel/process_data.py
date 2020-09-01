@@ -13,13 +13,13 @@ def process_data(args,x_train,y_train,x_test,y_test,x_unlabelled):
   y_train = y_train.flatten()
   y_test = y_test.flatten()
   #Taking true and false data in same ration for train(200) and test(500) and unlablled(2000)
-  x_train_labelled = np.concatenate((x_train[y_train==1][0:100], x_train[y_train==0][0:100])) 
-  y_train_labelled = np.concatenate((y_train[y_train==1][0:100], y_train[y_train==0][0:100]))
+  x_train_labelled = x_train #np.concatenate((x_train[y_train==1][0:100], x_train[y_train==0][0:100])) 
+  y_train_labelled = y_train #np.concatenate((y_train[y_train==1][0:100], y_train[y_train==0][0:100]))
   x_train_labelled,y_train_labelled = unison_shuffled_copies(x_train_labelled,y_train_labelled)
-  x_test_labelled = np.concatenate((x_test[y_test==1][0:500], x_test[y_test==0][0:500]))
-  y_test_labelled = np.concatenate((y_test[y_test==1][0:500], y_test[y_test==0][0:500]))
+  x_test_labelled = x_test #np.concatenate((x_test[y_test==1][0:500], x_test[y_test==0][0:500]))
+  y_test_labelled = y_test #np.concatenate((y_test[y_test==1][0:500], y_test[y_test==0][0:500]))
   x_test_labelled,y_test_labelled = unison_shuffled_copies(x_test_labelled,y_test_labelled)
-  x_unlabelled = x_unlabelled[0:2000]
+  x_unlabelled = x_unlabelled #x_unlabelled[0:2000]
   #Adding word dropout for 5 words
   x_train_labelled = np.apply_along_axis(word_dropout, 1, x_train_labelled,5)
   return x_train_labelled, y_train_labelled, x_test_labelled,y_test_labelled, x_unlabelled,vocab_size
