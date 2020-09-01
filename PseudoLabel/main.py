@@ -88,7 +88,7 @@ if __name__ == '__main__':
     
     # pseduolabel 
     #User parameters lr, batch_size, Epochs, n= no of iteration need to get mean result, Thresh = Confidence Threshold between 0 and 1 to select Pseudo Labels
-    parser.add_argument('--lr', default=0.001, type=float)
+    parser.add_argument('--lr', default=0.0001, type=float)
     parser.add_argument('--Epochs', default=14, type=int)
     parser.add_argument('--batch_size', default=64, type=int)
     parser.add_argument('--n', default=10, type=int)
