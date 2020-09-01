@@ -13,22 +13,22 @@ Install libraries in requirements.txt:
 
 
 ## Data Preprocessing for Mean Teacher and Pseduo Label
-From command prompt and Go to folder path where code is available and run the below command.
-Here go to Fakenewdetection folder then excecute the below comment
+From the command prompt, change your present working directory to folder where your downloaded code is present. Change the directory to Fakenewdetection folder execute the below command
 
 `
 python Datapreprocessing\Datapreprocessing.py
 `
 
-In the Data\Preprocessing\Input1 folder place the label.csv and unlable.csv file for data preprocessing and This is raw data, 
-because we have created 4 different types datasets each data sets placed in the different folder like Input1,Input2,Input3,Input4
+Place the label.csv and unlabel.csv under Data\Preprocessing\Input1 folder. We have created 4 different types datasets each of them are placed
+under Input1, Input2, Input3, Input4 folders respectively.
 
-In the data file, these columns and its names are important for data cleaning and creating the test and train data files for models processing. 
-once data preprocessing complete it will place the test and train data in Data\Input
+Summary of the columns present in the data file.
 
 `Article` - contain the articles data
 
 `Label` - lables for artilce Real=-1 Fake=- 0 and unlable=-1 and these should be numeric 
+
+Once the data preprocessing is completed, train data and test data files will be available under Data\Input folder.
 
 Default values 
 
