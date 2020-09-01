@@ -19,7 +19,7 @@ From the command prompt, change your present working directory to folder where y
 python Datapreprocessing\Datapreprocessing.py
 `
 
-Place the label.csv and unlabel.csv under Data\Preprocessing\Input1 folder. We have created 4 different types datasets each of them are placed
+Place the label.csv and unlabel.csv under Data\Preprocessing\Input1 folder. We have created 4 different types of datasets each of them are placed
 under Input1, Input2, Input3, Input4 folders respectively.
 
 Summary of the columns present in the data file.
@@ -32,56 +32,52 @@ Once the data preprocessing is completed, train data and test data files will be
 
 Default values 
 
-Once file processed and it will place the npy files in Data\Input1 -- From this location npy files will taken by MeanTeacher and Pseduo label models for training
-it not hard code, you can change these location by passing parameters 
+As the preprocessing is done, the npy files will be available in Data\Input1, which will be input for Mean Teacher and Pseduo Label for training.
 
-Example
-
+For example:-
 
 `python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
 `
+#Parameters required for running Datapreprocessing.py
 
+--inputPath: input path for raw data (not processed)
 
-Parameters of Datapreprocessing.py, default parameters have been give, if its needed it can be replaced by passing as parameters. 
+--outputPath: output Path for processed data, which will intake by further models
 
---inputPath  - input path for raw data (not processed)
+--labeldataname: file name for label data
 
---outputPath -  output Path for processed data, which will intake by further models
+--unlabeldataname: file name for unlabel data
 
---labeldataname - file name for label data
+--xTrain: npy xTrain file name
 
---unlabeldataname - file name for unlabel data
+--xTest: npy xTest file name
 
---xTrain - npy xTrain file name
+--yTrain: npy yTrain file name
 
---xTest - npy xTest file name
+--yTest: npy yTest file name
 
---yTrain - npy yTrain file name
-
---yTest - npy yTest file name
-
---xUnlabel - npy xUnlabel file name
+--xUnlabel: npy xUnlabel file name
 
 
 Default values 
 
---inputPath  - os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input1\\
+--inputPath: os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input1\\
 
---outputPath -  os.path.abspath(os.getcwd())+"\\Data\\Input1\\
+--outputPath: os.path.abspath(os.getcwd())+"\\Data\\Input1\\
 
---labeldataname - label.csv
+--labeldataname: label.csv
 
---unlabeldataname - unlabel.csv
+--unlabeldataname: unlabel.csv
 
---xTrain - xtr_shuffled.npy
+--xTrain: xtr_shuffled.npy
 
---xTest - xte_shuffled.npy
+--xTest: xte_shuffled.npy
 
---yTrain - ytr_shuffled.npy
+--yTrain: ytr_shuffled.npy
 
---yTest - yte_shuffled.npy
+--yTest: yte_shuffled.npy
 
---xUnlabel - xun_shuffled.npy
+--xUnlabel: xun_shuffled.npy
 
 
 We have completed preprocessing and placed all those data files in respective folders such as Data\Input1,Data\Input2,Data\Input3,Data\Input4.
