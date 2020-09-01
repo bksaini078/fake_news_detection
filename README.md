@@ -145,10 +145,9 @@ Pseduo Label model for false article classification.
 It will take test and train data from Data\Input1 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
 Please Go to folder path where code is available and run like below
 
-`python PseudoLabel\main.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64 --alpha 0.95 
+`python PseudoLabel\main.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64 
 
 `
---ratio
 --Thresh
 --inputPath  - input path to the train model ( /Users/tmp/Testing/)
 --outputPath - output path to place report and files ( /Users/tmp/Testing/)
@@ -160,7 +159,7 @@ Default values
 
 --epochs default=14
 
---batchSize default=32
+--batchSize default=64
 
 --Thresh default=0.90
 
