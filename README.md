@@ -38,7 +38,9 @@ For example:-
 
 `python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
 `
-#Parameters required for running Datapreprocessing.py
+
+
+## Parameters required for running Datapreprocessing.py
 
 --inputPath: input path for raw data (not processed)
 
