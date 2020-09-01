@@ -18,6 +18,7 @@ Install libraries in requirements.txt:
 ## Data Preprocessing for Mean Teacher and Pseduo Label
 From command prompt and Go to folder path where code is available and run the below command.
 Here go to Fakenewdetection folder then excecute the below comment
+
 `
 python Datapreprocessing\Datapreprocessing.py
 `
@@ -42,6 +43,8 @@ Example
 
 `python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
 `
+
+
 Parameters of Datapreprocessing.py, default parameters have been give, if its needed it can be replaced by passing as parameters. 
 
 --inputPath  - input path for raw data (not processed)
