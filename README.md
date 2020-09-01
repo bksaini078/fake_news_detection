@@ -1,11 +1,8 @@
 # False Article Detection With Weakly Supervised Learning
 
-This contain the code for detecting the false article detection using weakly supervised learning. 
+This contains the code for detecting the false article detection using weakly supervised learning. 
 
-Becasue of Space issue and constraint, we are not able to load the many files such as embedding.model,glove,etc. The whole set up, we have kept in the Gdrive.Please see the link below.
-
-https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing
-
+Due to storage constraint, we are not able to load many files such as embedding.model, glove, etc. We have kept them in Google drive: https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing
 
 ## Starting
 
