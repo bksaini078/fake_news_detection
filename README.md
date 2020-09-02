@@ -12,8 +12,6 @@ Install libraries in requirements.txt:
 ```console
 pip3 install -r requirements.txt
 ```
-`pip3 install -r requirements.txt`
-
 
 ## Data Preprocessing for Mean Teacher and Pseduo Label
 From the command prompt, change your present working directory to folder where your downloaded code is present. Change the directory to Fakenewdetection folder execute the below command
