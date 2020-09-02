@@ -9,7 +9,9 @@ Due to storage constraint, we are not able to load many files such as embedding.
 
 
 Install libraries in requirements.txt:
-
+```console
+pip3 install -r requirements.txt
+```
 `pip3 install -r requirements.txt`
 
 
