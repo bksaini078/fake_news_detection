@@ -2,7 +2,7 @@
 
 This contains the code for detecting the false article detection using weakly supervised learning. 
 
-Due to storage constraint, we are not able to load many files such as embedding.model, glove, etc. We have kept them in Google drive: https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing
+Due to storage constraint, we are not able to load many files such as embedding.model, glove, etc. We have kept them in [Google drive] (https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing)
 
 ## Starting
 
