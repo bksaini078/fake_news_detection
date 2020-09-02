@@ -144,24 +144,19 @@ python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epo
 --outputPath - output path to place report and files ( /Users/tmp/Testing/)
 --n
 
-Default values 
-
---lr default=0.0001
-
---epochs default=14
-
---batchSize default=64
-
---Thresh default=0.90
-
---inputPath default=os path where you placed the code in system + \Data\Input1\
-
---outputPath'os.path.here you placed the code in system + \Data\Output1\
---xTrain default="xtr_shuffled.npy"
---xTest default="xte_shuffled.npy"
---yTrain default="ytr_shuffled.npy"
---yTest default="yte_shuffled.npy"
---xUnlabel default="xun_shuffled.npy"
+| Parameter | Default Value |
+|-----------|-------------|
+|--lr | 0.0001 |
+|--epochs | 14 |
+|--batchSize | 64 |
+|--Thresh | 0.90 |
+|--inputPath| os path where you placed the code in system + \Data\Input1\|
+|--outputPath | os.path.here you placed the code in system + \Data\Output1\|
+|--xTrain |"xtr_shuffled.npy" |
+|--xTest | "xte_shuffled.npy"|
+|--yTrain | "ytr_shuffled.npy" |
+|--yTest | "yte_shuffled.npy" |
+|--xUnlabel | "xun_shuffled.npy" |
 
 ### VAT
 #### Data Preprocessing for VAT
@@ -181,14 +176,14 @@ Example:
 ```console
 python VAT\preprocessing\text_spacy.py --inputPath C:\fake_news_detection\VAT\Input4\raw\ --outputPath C:\fake_news_detection\VAT\Input4\processed\
 ```
-
-Parameters with default values:
---inputPath \\VAT\\Input1\\raw\\
---labelfilename label.csv
---unlabelfilename unlabel.csv
---outputPath \\VAT\\Input1\\processed\\
---Remain label.csv 
---xUnlabel xun_shuffled.npy 
+| Parameter | Default Value |
+|-----------|-------------|
+|--inputPath| \\VAT\\Input1\\raw\\ |
+|--labelfilename | label.csv |
+|--unlabelfilename | unlabel.csv |
+|--outputPath | \\VAT\\Input1\\processed\\ |
+|--Remain | label.csv |
+|--xUnlabel | "xun_shuffled.npy" |
 
 Stage 2 : split the label data and place it in the processed folder
 
@@ -197,14 +192,16 @@ Example:
 ```console
 python VAT\preprocessing\split_data.py --Path C:\fake_news_detection\VAT\Input2\processed\
 ```
-Parameters with default values:
---Path \\VAT\\Input1\\processed\\
---filename lable.csv
---xUnlabel xun_shuffled.npy
---xTrain x_train.npy
---xTest x_test.npy
---yTrain y_train.npy
---yTest y_test.npy
+| Parameter | Default Value |
+|-----------|-------------|
+|--Path| \\VAT\\Input1\\processed\\ |
+|--filename | label.csv |
+|--xUnlabel | xun_shuffled.npy |
+|--xTrain | x_train.npy |
+|--xTest | x_test.npy |
+|--yTrain | y_train.npy |
+|--yTest | y_test.npy |
+
 
 Stage 3 : Tokenize the splitted data., here word picket file will be placed in the meta folder
 
@@ -216,15 +213,17 @@ python VAT\preprocessing\tokenization_vat.py --inputPath C:\fake_news_detection\
 
 Parameters with default values:
 
---inputPath \\VAT\\Input1\\processed\\
---outputPath \\VAT\\Input1\\temp\\
---pickelPath \\VAT\\Input1\\meta\\
---filename lable.csv
---xUnlabel xun_shuffled.npy
---xTrain x_train.npy
---xTest x_test.npy
---yTrain y_train.npy
---yTest y_test.npy
+| Parameter | Default Value |
+|-----------|-------------|
+|--inputPath| \\VAT\\Input1\\processed\\ |
+|--outputPath| \\VAT\\Input1\\temp\\ |
+|--pickelPath| \\VAT\\Input1\\meta\\ |
+|--filename | label.csv |
+|--xUnlabel | xun_shuffled.npy |
+|--xTrain | x_train.npy |
+|--xTest | x_test.npy |
+|--yTrain | y_train.npy |
+|--yTest | y_test.npy |
 
 Stage 4 : Emedding, for this golve file is need, this file you can download from the site https://nlp.stanford.edu/projects/glove/ and place it in the 
 path \\VAT\\ because this files is common to all input files. Once emedding its created and it will place it in the meta folder which is default.
@@ -236,10 +235,11 @@ python VAT\preprocessing\embedding.py --pickelPath C:\fake_news_detection\VAT\In
 ```
 Parameters with default values:
 
---pickelPath \\VAT\\Input1\\meta
---glovePath \\VAT
---EMBEDDING_DIM 300 
-
+| Parameter | Default Value |
+|-----------|-------------|
+|--pickelPath | \\VAT\\Input1\\meta |
+|--glovePath | \\VAT |
+|--EMBEDDING_DIM | 300 |
 
 Once all processing completed the final processed file will be placed inside the VAT\Input1\temp\ folder for each data. 
 We have completed the preprocessing and those files are already in location.
@@ -256,19 +256,20 @@ python VAT\main\vat.py --n_epochs 30 --batchSize 64 --lr 0.0001
 
 Parameters with default values:
 
---lr, default=0.0001
---n_epochs, default=10
---batch_size, default=32
---emb_dim, default=300
---doc_length, default=100
---n_splits, default=10
---epsilon, default=0.01
---act_fn, default='tanh'
---model_type, default='VAT
---comment, default='Unknown embeddings 6210/38028'
---inputPath, default=os.path.abspath(os.getcwd())+"\\VAT\\Input1\\"
---outputPath, default=os.path.abspath(os.getcwd())+"\\VAT\\Output1\\"
-
+| Parameter | Default Value |
+|-----------|-------------|
+|--lr | 0.0001 |
+|--n_epochs | 10 |
+|--batch_size | 32 |
+|--emb_dim | 300 |
+|--doc_length| 100 |
+|--n_splits | 10 |
+|--epsilon | 0.01 |
+|--act_fn | 'tanh'|
+|--model_type | 'VAT' |
+|--comment | 'Unknown embeddings 6210/38028' |
+|--inputPath | os.path.abspath(os.getcwd())+"\\VAT\\Input1\\" |
+|--outputPath | os.path.abspath(os.getcwd())+"\\VAT\\Output1\\" |
 
 
 ## Contributors
