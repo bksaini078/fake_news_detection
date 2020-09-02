@@ -136,13 +136,11 @@ It will take test and train data from Data\Input1 folder as default, and once tr
 Please Go to folder path where code is available and run like below
 
 ```console
-python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64
+python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epochs 30 --batch_size 32
 ```
 
---Thresh
---inputPath  - input path to the train model ( /Users/tmp/Testing/)
---outputPath - output path to place report and files ( /Users/tmp/Testing/)
---n
+--inputPath  - input path to the train model (Eg: /Users/tmp/Testing/)
+--outputPath - output path to place report and files (Eg: /Users/tmp/Testing/)
 
 | Parameter | Default Value |
 |-----------|-------------|
@@ -152,8 +150,8 @@ python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epo
 |--Thresh | 0.90 |
 |--n | 10 |
 |--max_len | 128 |
-|--inputPath| os path where you placed the code in system + \Data\Input1\|
-|--outputPath | os.path.here you placed the code in system + \Data\Output1\|
+|--inputPath| os path where you placed the code in system + \Data\Input1\ |
+|--outputPath | os.path.here you placed the code in system + \Data\Output1\ |
 |--xTrain |"xtr_shuffled.npy" |
 |--xTest | "xte_shuffled.npy"|
 |--yTrain | "ytr_shuffled.npy" |
