@@ -5,6 +5,8 @@ This contains the code for detecting the false article detection using weakly su
 Due to storage constraint, we are not able to load many files such as embedding.model, glove, etc. We have kept them in 
 [Google drive](https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing)
 
+## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.
+
 ## Starting
 
 Install libraries in requirements.txt:
@@ -34,7 +36,7 @@ Once the data preprocessing is completed, train data and test data files will be
 
 Default values 
 
-As the preprocessing is done, the npy files will be available in Data\Input1, which will be input for Mean Teacher and Pseduo Label for training.
+As the preprocessing is done, the npy files will be available in Data\Input2, which will be input for Mean Teacher and Pseduo Label for training.
 
 For example:-
 ```console
@@ -62,8 +64,8 @@ python Datapreprocessing\Datapreprocessing.py --inputPath C:\fake_news_detection
 
 | Parameter | Default Value |
 |-----------|-------------|
-|--inputPath | os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input1\\ |
-|--outputPath | os.path.abspath(os.getcwd())+"\\Data\\Input1\\ |
+|--inputPath | os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input2\\ |
+|--outputPath | os.path.abspath(os.getcwd())+"\\Data\\Input2\\ |
 |--labeldataname | label.csv |
 |--unlabeldataname | unlabel.csv |
 |--xTrain | xtr_shuffled.npy |
@@ -78,7 +80,7 @@ From these folder, preprocessed data can take for further training the meanteach
 ### Mean Teacher
 Mean Teacher model for false article classification.
 
-It will take test and train data from Data\Input1 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
+It will take test and train data from Data\Input2 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
 Please Go to folder path where code is available and run like below
 Mean Teacher, we have created different method of noises which can be called by parameters 
 
@@ -118,8 +120,8 @@ Default values
 |--dropout | 0.2 |
 |--synonym_noise_b1 | 0.5 |
 |--synonym_noise_b2 | 0.3 |
-|--inputPath | os path where you placed the code in system + \Data\Input1\ |
-|--outputPath | os.path.here you placed the code in system + \Data\Output1\ |
+|--inputPath | os path where you placed the code in system + \Data\Input2\ |
+|--outputPath | os.path.here you placed the code in system + \Data\Output2\ |
 |--xTrain |"xtr_shuffled.npy" |
 |--xTest | "xte_shuffled.npy"|
 |--yTrain | "ytr_shuffled.npy" |
@@ -132,7 +134,7 @@ Default values
 
 Pseduo Label model for false article classification.
 
-It will take test and train data from Data\Input1 folder as default, and once training complete it will place the report and plot in Data\Output1 folder as default
+It will take test and train data from Data\Input2 folder as default, and once training complete it will place the report and plot in Data\Output2 folder as default
 Please Go to folder path where code is available and run like below
 
 ```console
@@ -150,8 +152,8 @@ python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epo
 |--Thresh | 0.90 |
 |--n | 10 |
 |--max_len | 128 |
-|--inputPath| os path where you placed the code in system + \Data\Input1\ |
-|--outputPath | os.path.here you placed the code in system + \Data\Output1\ |
+|--inputPath| os path where you placed the code in system + \Data\Input2\ |
+|--outputPath | os.path.here you placed the code in system + \Data\Output2\ |
 |--xTrain |"xtr_shuffled.npy" |
 |--xTest | "xte_shuffled.npy"|
 |--yTrain | "ytr_shuffled.npy" |
