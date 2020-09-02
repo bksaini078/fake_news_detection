@@ -58,25 +58,19 @@ python Datapreprocessing\Datapreprocessing.py --inputPath C:\fake_news_detection
 
 
 
-Default values 
+### Default values 
 
---inputPath: os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input1\\
-
---outputPath: os.path.abspath(os.getcwd())+"\\Data\\Input1\\
-
---labeldataname: label.csv
-
---unlabeldataname: unlabel.csv
-
---xTrain: xtr_shuffled.npy
-
---xTest: xte_shuffled.npy
-
---yTrain: ytr_shuffled.npy
-
---yTest: yte_shuffled.npy
-
---xUnlabel: xun_shuffled.npy
+| Parameter | Default Value |
+|-----------|-------------|
+|--inputPath | os.path.abspath(os.getcwd())+"\\Data\\\Preprocessing\\Input1\\ |
+|--outputPath | os.path.abspath(os.getcwd())+"\\Data\\Input1\\ |
+|--labeldataname | label.csv |
+|--unlabeldataname | unlabel.csv |
+|--xTrain | xtr_shuffled.npy |
+|--xTest | xte_shuffled.npy |
+|--yTrain | ytr_shuffled.npy |
+|--yTest | yte_shuffled.npy |
+|--xUnlabel | xun_shuffled.npy |
 
 
 We have completed preprocessing and placed all those data files in respective folders such as Data\Input1,Data\Input2,Data\Input3,Data\Input4.
@@ -87,6 +81,7 @@ Mean Teacher model for false article classification.
 It will take test and train data from Data\Input1 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
 Please Go to folder path where code is available and run like below
 Mean Teacher, we have created different method of noises which can be called by parameters 
+
 
 --meanteacher  MT_syn_unlabel_diff (Mean teacher default )
 
