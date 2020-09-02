@@ -94,8 +94,8 @@ if __name__ == '__main__':
     parser.add_argument('--n', default=10, type=int)
     parser.add_argument('--Thresh', default=0.90, type=float)
     #filename and path for input and output file
-    parser.add_argument('--inputPath',type=str, default=os.path.abspath(os.getcwd())+"\\Data\\Input1\\")
-    parser.add_argument('--outputPath',type=str, default=os.path.abspath(os.getcwd())+"\\Data\\Output1\\")
+    parser.add_argument('--inputPath',type=str, default=os.path.abspath(os.getcwd())+"\\Data\\Input2\\")
+    parser.add_argument('--outputPath',type=str, default=os.path.abspath(os.getcwd())+"\\Data\\Output2\\")
     parser.add_argument('--xUnlabel', type=str,default="xun_shuffled.npy")
     parser.add_argument('--xTrain', type=str,default="xtr_shuffled.npy")
     parser.add_argument('--xTest', type=str,default="xte_shuffled.npy")
