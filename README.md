@@ -77,6 +77,18 @@ python Datapreprocessing\Datapreprocessing.py --inputPath C:\fake_news_detection
 
 We have completed preprocessing and placed all those data files in respective folders such as Data\Input1,Data\Input2,Data\Input3,Data\Input4.
 From these folder, preprocessed data can take for further training the meanteacher and pseduolabel models
+
+From the analysis,we found that 
+
+#####  Dataset 1 is over fitting
+
+##### Dataset 2 is tested and working correctly
+
+##### Dataset 3 has less amount of data compare to other dataset
+
+##### Dataset 4 is working fine but not tested completely. 
+
+
 ### Mean Teacher
 Mean Teacher model for false article classification.
 
