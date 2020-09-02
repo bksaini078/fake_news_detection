@@ -24,9 +24,11 @@ under Input1, Input2, Input3, Input4 folders respectively.
 
 Summary of the columns present in the data file.
 
-`Article` - contains true and fake articles
+| Column | Description |
+|--------|-------------|
+|Article | contains true and fake articles |
+| Label  | For True news = 1, Fake news = 0 and unlabeled = -1. (numeric value)|
 
-`Label`   - For True news = 1, Fake news = 0 and unlabeled = -1. (numeric value)
 
 Once the data preprocessing is completed, train data and test data files will be available under Data\Input folder.
 
