@@ -7,7 +7,6 @@ Due to storage constraint, we are not able to load many files such as embedding.
 
 ## Starting
 
-
 Install libraries in requirements.txt:
 ```console
 pip3 install -r requirements.txt
@@ -16,9 +15,9 @@ pip3 install -r requirements.txt
 ## Data Preprocessing for Mean Teacher and Pseduo Label
 From the command prompt, change your present working directory to folder where your downloaded code is present. Change the directory to Fakenewdetection folder execute the below command
 
-`
+```console
 python Datapreprocessing\Datapreprocessing.py
-`
+```
 
 Place the label.csv and unlabel.csv under Data\Preprocessing\Input1 folder. We have created 4 different types of datasets each of them are placed
 under Input1, Input2, Input3, Input4 folders respectively.
@@ -38,10 +37,9 @@ Default values
 As the preprocessing is done, the npy files will be available in Data\Input1, which will be input for Mean Teacher and Pseduo Label for training.
 
 For example:-
-
-`python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
-`
-
+```console
+python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
+```
 
 ### Parameters required for running Datapreprocessing.py
 
@@ -105,8 +103,10 @@ Mean Teacher, we have created different method of noises which can be called by 
 
 Once you call these method as parameter, automatically code regarding to this function and train the data in Data\Input1 folder (default)
 and the report will be placed in Data\Output1 folder (default) , default folders also changed by parameter passing
-`python  MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batchSize 64 --alpha 0.95 
-`
+
+```console
+python  MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batchSize 64 --alpha 0.95
+```
 
 other parameters also available 
 
@@ -146,9 +146,10 @@ Pseduo Label model for false article classification.
 It will take test and train data from Data\Input1 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
 Please Go to folder path where code is available and run like below
 
-`python PseudoLabel\main.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64 
+```console
+python PseudoLabel\main.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64
+```
 
-`
 --Thresh
 --inputPath  - input path to the train model ( /Users/tmp/Testing/)
 --outputPath - output path to place report and files ( /Users/tmp/Testing/)
@@ -188,9 +189,9 @@ Stage 1 : Here raw (default-VAT\Input1\raw) file wil be processed and placed in 
 
 Example:
 
-`python VAT\preprocessing\text_spacy.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input4\raw\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input4\processed\
-
-`
+```console
+python VAT\preprocessing\text_spacy.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input4\raw\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input4\processed\
+```
 
 Parameters with default values:
 --inputPath \\VAT\\Input1\\raw\\
@@ -203,9 +204,10 @@ Parameters with default values:
 Stage 2 : split the label data and place it in the processed folder
 
 Example:
- 
-`python VAT\preprocessing\split_data.py --Path C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\processed\
-`
+
+```console
+python VAT\preprocessing\split_data.py --Path C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\processed\
+```
 Parameters with default values:
 --Path \\VAT\\Input1\\processed\\
 --filename lable.csv
@@ -219,8 +221,9 @@ Stage 3 : Tokenize the splitted data., here word picket file will be placed in t
 
 Example:
 
-`python VAT\preprocessing\tokenization_vat.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\processed\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\temp\ --pickelPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\meta\
-`
+```console
+python VAT\preprocessing\tokenization_vat.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\processed\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\temp\ --pickelPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\meta\
+```
 
 Parameters with default values:
 
@@ -238,8 +241,10 @@ Stage 4 : Emedding, for this golve file is need, this file you can download from
 path \\VAT\\ because this files is common to all input files. Once emedding its created and it will place it in the meta folder which is default.
 
 Example :
-`python VAT\preprocessing\embedding.py --pickelPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\meta\ 
-`
+
+```console
+python VAT\preprocessing\embedding.py --pickelPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\meta\ 
+```
 Parameters with default values:
 
 --pickelPath \\VAT\\Input1\\meta
@@ -255,8 +260,10 @@ We have completed the preprocessing and those files are already in location.
 Once all files are available in temp directery, then we have to call only the main\vat.py
 
 Example:
-`python VAT\main\vat.py --n_epochs 30 --batchSize 64 --lr 0.0001 
-`
+
+```console
+python VAT\main\vat.py --n_epochs 30 --batchSize 64 --lr 0.0001 
+```
 
 Parameters with default values:
 
