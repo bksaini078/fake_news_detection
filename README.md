@@ -5,7 +5,7 @@ This contains the code for detecting the false article detection using weakly su
 Due to storage constraint, we are not able to load many files such as embedding.model, glove, etc. We have kept them in 
 [Google drive](https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing)
 
-## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.
+## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.The reports also generated from dataset2
 
 ## Starting
 
