@@ -147,9 +147,11 @@ python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epo
 | Parameter | Default Value |
 |-----------|-------------|
 |--lr | 0.0001 |
-|--epochs | 14 |
-|--batchSize | 64 |
+|--Epochs | 14 |
+|--batch_size | 64 |
 |--Thresh | 0.90 |
+|--n | 10 |
+|--max_len | 128 |
 |--inputPath| os path where you placed the code in system + \Data\Input1\|
 |--outputPath | os.path.here you placed the code in system + \Data\Output1\|
 |--xTrain |"xtr_shuffled.npy" |
