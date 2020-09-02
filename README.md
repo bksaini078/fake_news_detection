@@ -82,15 +82,12 @@ It will take test and train data from Data\Input1 folder as befault, and once tr
 Please Go to folder path where code is available and run like below
 Mean Teacher, we have created different method of noises which can be called by parameters 
 
-
---meanteacher  MT_syn_unlabel_diff (Mean teacher default )
-
---meanteacher  MT_syn_noise_diff   (Mean teacher with synonym noise)
-
---meanteacher  MT_dropout  ( Mean teacher with dropout)
-
---meanteacher  MT_syn_dropout (Mean teacher with synonym and dropout)
-
+| Parameter | Description |
+|-----------|-------------|
+|--meanteacher MT_syn_unlabel_diff | Mean teacher |
+|--meanteacher MT_syn_noise_diff | Mean teacher with synonym noise |
+|--meanteacher MT_dropout| Mean teacher with dropout |
+|--meanteacher MT_syn_dropout | Mean teacher with synonym and dropout |
 
 Once you call these method as parameter, automatically code regarding to this function and train the data in Data\Input1 folder (default)
 and the report will be placed in Data\Output1 folder (default) , default folders also changed by parameter passing
@@ -99,42 +96,43 @@ and the report will be placed in Data\Output1 folder (default) , default folders
 python  MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batchSize 64 --alpha 0.95
 ```
 
-other parameters also available 
+other parameters are also available 
 
-
---ratio
-
---threashold
-
---inputPath  - input path to the train model ( /Users/tmp/Testing/)
-
---outputPath - output path to place report and files ( /Users/tmp/Testing/)
+| Parameter | Description |
+|-----------|-------------|
+|--ratio |  |
+|--threashold |  |
+|--inputPath | Input path to the train model ( /Users/tmp/Testing/) |
+|--outputPath | Output path to place report and files ( /Users/tmp/Testing/) |
 
 
 Default values 
 
---lr default=0.0001
---epochs default=10
---batchSize default=64
---ratio default=0.5
---alpha default=0.97
---dropout default=0.2
---synonym_noise_b1=0.5
---synonym_noise_b2=0.3
---inputPath default=os path where you placed the code in system + \Data\Input1\
---outputPath'os.path.here you placed the code in system + \Data\Output1\
---xTrain default="xtr_shuffled.npy"
---xTest default="xte_shuffled.npy"
---yTrain default="ytr_shuffled.npy"
---yTest default="yte_shuffled.npy"
---xUnlabel default="xun_shuffled.npy"
---reportIterate default="report_iterate_mean_teacher.csv"
+| Parameter | Default Value |
+|-----------|-------------|
+|--lr | 0.0001 |
+|--epochs | 10 |
+|--batchSize | 64 |
+|--ratio | 0.5 |
+|--alpha | 0.97 |
+|--dropout | 0.2 |
+|--synonym_noise_b1 | 0.5 |
+|--synonym_noise_b2 | 0.3 |
+|--inputPath | os path where you placed the code in system + \Data\Input1\ |
+|--outputPath | os.path.here you placed the code in system + \Data\Output1\ |
+|--xTrain |"xtr_shuffled.npy" |
+|--xTest | "xte_shuffled.npy"|
+|--yTrain | "ytr_shuffled.npy" |
+|--yTest | "yte_shuffled.npy" |
+|--xUnlabel | "xun_shuffled.npy" |
+|--reportIterate | "report_iterate_mean_teacher.csv" |
+
 
 ### Pseduo Label
 
 Pseduo Label model for false article classification.
 
-It will take test and train data from Data\Input1 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
+It will take test and train data from Data\Input1 folder as default, and once training complete it will place the report and plot in Data\Output1 folder as default
 Please Go to folder path where code is available and run like below
 
 ```console
@@ -189,7 +187,7 @@ Parameters with default values:
 --labelfilename label.csv
 --unlabelfilename unlabel.csv
 --outputPath \\VAT\\Input1\\processed\\
---Remain lable.csv 
+--Remain label.csv 
 --xUnlabel xun_shuffled.npy 
 
 Stage 2 : split the label data and place it in the processed folder
