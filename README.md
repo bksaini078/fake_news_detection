@@ -38,7 +38,7 @@ As the preprocessing is done, the npy files will be available in Data\Input1, wh
 
 For example:-
 ```console
-python Datapreprocessing\Datapreprocessing.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\
+python Datapreprocessing\Datapreprocessing.py --inputPath C:\fake_news_detection\Data\Preprocessing\Input4\ --outputPath C:\fake_news_detection\Data\Input4\
 ```
 
 ### Parameters required for running Datapreprocessing.py
@@ -147,7 +147,7 @@ It will take test and train data from Data\Input1 folder as befault, and once tr
 Please Go to folder path where code is available and run like below
 
 ```console
-python PseudoLabel\main.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64
+python PseudoLabel\main.py --inputPath C:\fake_news_detection\Data\Input4\ --epochs 30 --batchSize 64
 ```
 
 --Thresh
@@ -190,7 +190,7 @@ Stage 1 : Here raw (default-VAT\Input1\raw) file wil be processed and placed in 
 Example:
 
 ```console
-python VAT\preprocessing\text_spacy.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input4\raw\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input4\processed\
+python VAT\preprocessing\text_spacy.py --inputPath C:\fake_news_detection\VAT\Input4\raw\ --outputPath C:\fake_news_detection\VAT\Input4\processed\
 ```
 
 Parameters with default values:
@@ -206,7 +206,7 @@ Stage 2 : split the label data and place it in the processed folder
 Example:
 
 ```console
-python VAT\preprocessing\split_data.py --Path C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\processed\
+python VAT\preprocessing\split_data.py --Path C:\fake_news_detection\VAT\Input2\processed\
 ```
 Parameters with default values:
 --Path \\VAT\\Input1\\processed\\
@@ -222,7 +222,7 @@ Stage 3 : Tokenize the splitted data., here word picket file will be placed in t
 Example:
 
 ```console
-python VAT\preprocessing\tokenization_vat.py --inputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\processed\ --outputPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\temp\ --pickelPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\meta\
+python VAT\preprocessing\tokenization_vat.py --inputPath C:\fake_news_detection\VAT\Input2\processed\ --outputPath C:\fake_news_detection\VAT\Input2\temp\ --pickelPath C:\fake_news_detection\VAT\Input2\meta\
 ```
 
 Parameters with default values:
@@ -243,7 +243,7 @@ path \\VAT\\ because this files is common to all input files. Once emedding its 
 Example :
 
 ```console
-python VAT\preprocessing\embedding.py --pickelPath C:\masters\Master_projects\research_lab\fake_news_detection\VAT\Input2\meta\ 
+python VAT\preprocessing\embedding.py --pickelPath C:\fake_news_detection\VAT\Input2\meta\ 
 ```
 Parameters with default values:
 
