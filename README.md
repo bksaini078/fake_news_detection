@@ -43,23 +43,19 @@ python Datapreprocessing\Datapreprocessing.py --inputPath C:\fake_news_detection
 
 ### Parameters required for running Datapreprocessing.py
 
---inputPath: input path for raw data (not processed)
 
---outputPath: output Path for processed data, which will intake by further models
+| Parameter | Description |
+|-----------|-------------|
+|--inputPath | input path for un-processed data|
+|--outputPath | output path for processed data, taken as input for ML models|
+|--labeldataname | file name for label data |
+|--unlabeldataname | file name for unlabel data |
+|--xTrain | npy xTrain file name |
+|--xTest | npy xTest file name |
+|--yTrain | npy yTrain file name |
+|--yTest | npy yTest file name |
+|--xUnlabel | npy xUnlabel file name |
 
---labeldataname: file name for label data
-
---unlabeldataname: file name for unlabel data
-
---xTrain: npy xTrain file name
-
---xTest: npy xTest file name
-
---yTrain: npy yTrain file name
-
---yTest: npy yTest file name
-
---xUnlabel: npy xUnlabel file name
 
 
 Default values 
