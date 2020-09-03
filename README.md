@@ -103,8 +103,8 @@ Mean Teacher, we have created different method of noises which can be called by 
 |--meanteacher MT_dropout| Mean teacher with dropout |
 |--meanteacher MT_syn_dropout | Mean teacher with synonym and dropout |
 
-Once you call these method as parameter, automatically code regarding to this function and train the data in Data\Input1 folder (default)
-and the report will be placed in Data\Output1 folder (default) , default folders also changed by parameter passing
+Once you call these method as parameter, automatically code regarding to this function and train the data in Data\Input2 folder (default)
+and the report will be placed in Data\Output2 folder (default) , default folders also changed by parameter passing
 
 ```console
 python  MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batchSize 64 --alpha 0.95
