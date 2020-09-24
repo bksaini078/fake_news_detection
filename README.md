@@ -107,7 +107,7 @@ Once you call these method as parameter, automatically code regarding to this fu
 and the report will be placed in Data\Output2 folder (default) , default folders also changed by parameter passing
 
 ```console
-python  MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batch_size 64 --alpha 0.95
+python MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batch_size 64 --alpha 0.95
 ```
 
 other parameters are also available 
