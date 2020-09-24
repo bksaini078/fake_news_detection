@@ -58,6 +58,7 @@ if __name__ == '__main__':
         print('Train Label count: True, Fake', np.count_nonzero(y_train==1),np.count_nonzero(y_train==0))
         print('Test Label count : True, Fake', np.count_nonzero(y_test==1),np.count_nonzero(y_test==0))
         # train_supervised(epochs, batch_size, lr,x_train, y_train, x_test, y_test,maxlen,vocab_size)
+        # calling model according to inputs
         if (args.meanteacher == 'MT_syn_unlabel_diff'):
             train_MeanTeacher_syn_unlabel_diff(args,args.epochs, args.batch_size, args.alpha, args.lr, args.ratio,x_train, y_train, x_test, y_test, x_unlabel,vocab_size, tokenizer,args.maxlen)
         elif (args.meanteacher == 'MT_syn_noise_diff'):
