@@ -1,8 +1,8 @@
 import argparse
 from load_data import loading_data,Kfold_crossvalidation, add_params_data
 from tokenization import tokenization
-from MeanTeacher_syn_unlabel_diff import train_MeanTeacher_syn_unlabel_diff
-from MeanTeacher_syn_noise_diff import train_MeanTeacher_syn_noise_diff
+from MeanTeacher_unlabel import train_MeanTeacher_syn_unlabel_diff
+from MeanTeacher_synonym import train_MeanTeacher_syn_noise_diff
 from MeanTeacher_dropout import train_MeanTeacher_dropout
 from MeanTeacher_syn_dropout import train_MeanTeacher_syn_dropout
 from report_writing import add_params_report
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     parser.add_argument('--meanteacher', default='MT_syn_unlabel_diff', type=str)
     #for mean teacher 
     parser.add_argument('--ratio', default=0.5, type=float)
-    parser.add_argument('--alpha', type=float, default=0.99)
+    parser.add_argument('--alpha',  default=0.99,type=float)
     parser.add_argument('--maxlen', type=int, default=100)
     parser.add_argument('--dropout', type=float, default=0.2)
     parser.add_argument('--synonym_noise_b1', type=float, default=0.5)

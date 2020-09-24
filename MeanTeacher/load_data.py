@@ -6,7 +6,9 @@ from sklearn.model_selection import train_test_split
 
 def loading_data(args):
     if not os.path.isfile(args.inputPath + args.xTest):
+        # print(args.inputPath + args.xTest)
         print("Please clean the data first or the location of npy file is incorrect, Checking function Loading_data")
+        quit( )
     else:
         x_tr = np.load(args.inputPath + args.xTrain,allow_pickle=True)
         x_te = np.load(args.inputPath + args.xTest ,allow_pickle=True)
@@ -31,8 +33,8 @@ def Kfold_crossvalidation(args,x_train,y_train,x_test,y_test):
     return x_tr, y_tr, x_te, y_te
 
 def add_params_data(parser):
-    parser.add_argument('--inputPath',type=str, default=os.path.abspath(os.getcwd())+"\\Data\\Input2\\")
-    parser.add_argument('--outputPath',type=str, default=os.path.abspath(os.getcwd())+"\\Data\\Output2\\")
+    parser.add_argument('--inputPath',type=str, default=os.path.abspath(os.getcwd())+"/Data/Input2/")
+    parser.add_argument('--outputPath',type=str, default=os.path.abspath(os.getcwd())+"/Data/Output2/")
     parser.add_argument('--xTrain', type=str,default="xtr_shuffled.npy")
     parser.add_argument('--xTest', type=str,default="xte_shuffled.npy")
     parser.add_argument('--yTrain', type=str,default="ytr_shuffled.npy")
