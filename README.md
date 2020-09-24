@@ -92,7 +92,7 @@ From the analysis,we found that
 ### Mean Teacher
 Mean Teacher model for false article classification.
 
-It will take test and train data from Data\Input2 folder as befault, and once training complete it will place the report and plot in Data\Output1 folder as default
+It will take test and train data from Data\Input2 folder as default, and once training complete it will place the report and plot in Data\Output1 folder as default
 Please Go to folder path where code is available and run like below
 Mean Teacher, we have created different method of noises which can be called by parameters 
 
@@ -107,7 +107,7 @@ Once you call these method as parameter, automatically code regarding to this fu
 and the report will be placed in Data\Output2 folder (default) , default folders also changed by parameter passing
 
 ```console
-python  MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batchSize 64 --alpha 0.95
+python MeanTeacher\main.py --meanteacher MT_dropout --lr 0.0005 --epochs 5 --batch_size 64 --alpha 0.95
 ```
 
 other parameters are also available 
