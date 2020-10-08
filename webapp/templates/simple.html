@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Evaluation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/result.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="result.css"> -->
+</head>
+<html lang="en ">
+
+<body>
+    <div class='count'>
+        <p> <strong>True News count: {{True_news}}  </strong> </p>
+        <p><strong> Fake News count: {{Fake_news}}  </strong> </p>
+    </div>
+    <div class='logo'>
+        <img src="/static/images/logo.png " alt="logo " style="width:290px;height:50px; ">
+        <!-- <img src="logo.png " alt="logo " style="width:290px;height:50px; "> -->
+
+    </div>
+    <!-- <h1>Fake News Detection with Weakly Supervised Learning</h1> -->
+
+    <div class='Table1'>
+        <h2>Evaluation</h2>
+        {% for table in tables %}
+        <!-- <h2>{{titles[loop.index]}}</h2> -->
+        {{ table|safe }} {% endfor %}
+        <p> <strong>Table:</strong> Evaluations of the approaches. </p>
+    </div>
+
+    <div class='Figure'>
+        <h2>ROC curve</h2>
+        <img src="/static/images/roccurve_overall.png " alt="roc " style="width:650px;height:500px; ">
+        <!-- <img src="roccurve_overall.png " alt="roc " style="width:500px;height:500px; "> -->
+        <p> <strong>Figure:</strong> ROC curve for Supervised, Label propagation, Mean teacher with different noise strategy, Psuedo labelling, and VAT</p>
+    </div>
+    <div class='HyperP'>
+        <p> Batch_size = 64 </p>
+        <p> Learning rate = 0.001 </p>
+        <p> Optimizer = adam </p>
+        <h4> Mean Teacher </h4>
+        <p> Ratio (r) = 0.5 </p>
+        <p> Alpha &alpha;= 0.99 </p>
+        <p>Probability (p1) = 0.5, syn and drop = 0.4</p>
+        <p>Probability (&rho;2) = 0.3, syn and drop = 0.2</p>
+        <p>Probability (&rho;1) = 0.2, syn and drop = 0.2</p>
+        <h4> VAT regularization </h4>
+        <p>&epsilon; = 0.02</p>
+        <h4> Psuedo labelling </h4>
+        <p> Confidence Threshold (&tau;) = 0.90 </p>
+
+    </div>
+    <div class='Table2'>
+        <h2>Prediction</h2>
+        {% for table in tables1 %}
+        <!-- <h2>{{titles[loop.index]}}</h2> -->
+        {{ table|safe }} {% endfor %}
+        <p> <strong>Table:</strong> Predictions of different model. </p>
+    </div>
+    <div class='author'>
+        <p>Designed and Developed by: Bhupender Kumar Saini</p>
+    </div>
+</body>
+
+</html>

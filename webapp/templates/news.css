@@ -1,0 +1,84 @@
+body {
+    background-color: rgb(236, 234, 234, 0.6);
+    /* background-image: url("neural.jpg"); */
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+    back
+}
+
+img {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    z-index: 0;
+    opacity: 1;
+    /* background-color: white */
+}
+
+h1 {
+    color: black;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+}
+
+ul {
+    color: black;
+    list-style-type: none;
+}
+
+p {
+    color: black;
+}
+
+.title {
+    margin-top: 70px;
+    margin-right: 10px;
+    text-align: center;
+    color: black;
+    /* background-color: gainsboro */
+}
+
+.upload-container {
+    margin-top: 40px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+    text-align: center;
+    color: black;
+}
+
+.meanteacher {
+    text-align: left;
+}
+
+.VAT {
+    text-align: center;
+}
+
+.Psuedo {
+    text-align: right;
+}
+
+.member {
+    margin-top: 90px;
+    margin-bottom: 100px;
+    margin-right: 0px;
+    margin-left: 900px;
+    text-align: right;
+}
+
+h4 {
+    color: black;
+    opacity: 0.8;
+    margin-top: 0px;
+    margin-bottom: 700px;
+    margin-right: 900px;
+    margin-left: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    text-align: left;
+}

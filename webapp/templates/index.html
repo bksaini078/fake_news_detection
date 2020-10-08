@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+
+<title>FakeNewsDetection</title>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/news.css') }}">
+
+<body>
+    <div class='logo'>
+        <img src="/static/images/logo.png " alt="logo " style="width:290px;height:50px; ">
+        <!-- <img src="logo.png " alt="logo " style="width:290px;height:50px; "> -->
+
+    </div>
+    <!-- <img src="/static/images/logo.png" alt="logo" style="width:290px;height:50px;"> -->
+    <div class='title'>
+        <h1>Fake News Detection with Weakly Supervised Learning</h1>
+    </div>
+
+    <div class="meanteacher">
+        <h2>Mean Teacher</h2>
+        <l>
+            <li>With Synonym as noise</li>
+            <li>With Dropouts</li>
+            <li>With Synonym and Dropouts</li>
+            <li>With Unlabel data</li>
+
+        </l>
+
+    </div>
+
+    <div class="VAT">
+        <h2>VAT regularization</h2>
+    </div>
+    <div class="Psuedo">
+        <h2>Psuedo Labelling</h2>
+    </div>
+
+    <div class="upload-container">
+        <title>Upload test file </title>
+        <h2>For Evaluation, upload Test file containing Article and Label</h2>
+        <form method=post enctype=multipart/form-data>
+            <input type=file name=xfile value='Testing data'>
+            <input type=submit value=Upload>
+        </form>
+    </div>
+
+
+    <div class="member">
+        <h2>Group 4</h2>
+        <ul>
+            <li>Bhupender Kumar Saini</li>
+            <li>Lokesh Sharma</li>
+            <li>Swathi </li>
+            <li>Mayur </li>
+            <li>Ravineesh</li>
+
+        </ul>
+
+    </div>
+
+    <h4>Institute for Web Science and Technologies-SS2020 </h4>
+    <a href="https://github.com/bksaini078/fake_news_detection" target="_blank">github repository</a>
+    <div class='author'>
+        <p>Designed and Developed by: Bhupender Kumar Saini</p>
+    </div>
+
+
+
+</body>
+
+</html>

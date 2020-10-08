@@ -1,0 +1,96 @@
+body {
+    background-color: rgba(255, 255, 255, 0.6);
+    /* background-image: url("neural.jpg"); */
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+h2 {
+    color: black;
+    /* text-align: center; */
+    text-decoration: underline;
+}
+
+h4 {
+    color: black;
+    text-decoration: underline;
+}
+
+.Table1 {
+    text-align: center;
+    /* right: 600px;
+    top: 40px; */
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin-right: 500px;
+    margin-left: 300px;
+}
+
+.Figure {
+    margin-top: 1px;
+    margin-bottom: 20px;
+    margin-right: 200px;
+    margin-left: 250px;
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    z-index: 0;
+    opacity: 1;
+    /* background-color: white */
+}
+
+.HyperP {
+    background-color: rgba(163, 159, 159, 0.575);
+    position: absolute;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: smaller;
+    top: 50px;
+    z-index: 0;
+    opacity: 1;
+    /* background-color: white */
+}
+
+.count {
+    background-color: rgba(201, 231, 238, 0.363);
+    position: absolute;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: smaller;
+    color: firebrick;
+    left: 30px;
+    top: 500px;
+    z-index: 0;
+    opacity: 1;
+    /* background-color: white */
+}
+
+.author {
+    position: absolute;
+    right: 10px;
+    top: 900px;
+    z-index: 0;
+    opacity: 1;
+    text-align: right;
+}
+
+.Table2 {
+    text-align: center;
+    /* right: 600px;
+    top: 40px; */
+    /* margin-top: 50px;
+    margin-bottom: 100px;
+    margin-right: 500px;
+    margin-left: 300px; */
+}
