@@ -4,7 +4,7 @@ spacy==2.2.4
 gensim==3.8.1
 en_core_web_sm==2.2.5
 matplotlib==3.1.1
-tensorflow==2.2.0
+tensorflow==2.3.1
 seaborn==0.9.1
 scikit-learn
 keras==2.3.1
