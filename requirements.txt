@@ -2,9 +2,10 @@ numpy==1.17.0
 nltk==3.4.5
 spacy==2.2.4
 gensim==3.8.1
-en_core_web_sm==2.2.5
+# en_core_web_sm==2.2.5
 matplotlib==3.1.1
 tensorflow==2.3.1
 seaborn==0.9.1
 scikit-learn
 keras==2.3.1
+pandas == 1.1.4
