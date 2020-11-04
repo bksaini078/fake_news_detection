@@ -4,11 +4,56 @@ from datetime import datetime
 
 import dateutil.parser as dparser
 import pandas as pd
+from langdetect import detect
 from pathlib import Path
+from sklearn.model_selection import KFold
 
 from logger import logger
 
 THRESHOLD_SCORE = 3
+
+
+def process_fakenewsnet(path: str):
+    dir = Path(path)
+    gossipcop = []
+    politifact = []
+    for filepath in dir.rglob("news content.json"):
+        with open(filepath) as f:
+            content = json.load(f)
+            if len(content['text']) == 0:
+                logger.debug(content['text'])
+                logger.error('There is no content')
+                continue
+            if detect(content['text']) != 'en':
+                continue
+            data = {}
+            data["content"] = content["text"]
+            data["title"] = content["title"]
+            data["publish_date"] = content["publish_date"]
+            data["url"] = content["url"]
+            filepath = str(filepath)
+            data["news_id"] = filepath
+            data["label"] = "fake" if "fake" in filepath else "true"
+
+            if "gossipcop" in filepath:
+                gossipcop.append(data)
+            else:
+                politifact.append(data)
+
+    logger.info("Stats of Gossipcop")
+    gossipcop = pd.DataFrame(gossipcop)
+    logger.info(gossipcop.groupby(["label"])["url"].count())
+
+    logger.info("Stats of Politifact")
+    politifact = pd.DataFrame(politifact)
+    logger.info(politifact.groupby(["label"])["url"].count())
+
+    Path('Data/Processed').mkdir(parents=True, exist_ok=True)
+    processed_dir = Path('Data/Processed') / 'FakeNewsNet_Gossipcop.tsv'
+    gossipcop.to_csv(processed_dir, sep='\t', index=False)
+
+    processed_dir = Path('Data/Processed') / 'FakeNewsNet_Politifact.tsv'
+    politifact.to_csv(processed_dir, sep='\t', index=False)
 
 
 def process_fakehealth(path: str):
@@ -46,9 +91,9 @@ def process_fakehealth(path: str):
         [filtered_fake_releases, filtered_true_stories, filtered_fake_stories, filtered_true_releases])
 
     Path('Data/Processed').mkdir(parents=True, exist_ok=True)
-    processed_dir = Path('Data/Processed')
-    merged_data.to_csv(processed_dir / 'FakeHealth.tsv', sep='\t')
-    logger.info(f"Merged data is saved to {processed_dir / 'FakeHealth.tsv'}")
+    processed_dir = Path('Data/Processed') / 'FakeHealth.tsv'
+    merged_data.to_csv(processed_dir, sep='\t', index=False)
+    logger.info(f"Merged data is saved to {processed_dir}")
 
 
 def extract_content(dir, news_source, news_ids, label):
@@ -62,6 +107,7 @@ def extract_content(dir, news_source, news_ids, label):
         with open(dir / fname) as f:
             news_item = json.load(f)
             data["content"] = news_item["text"]
+            data["title"] = news_item["title"]
             if news_item["publish_date"]:
                 data["publish_date"] = datetime.fromtimestamp(news_item["publish_date"])
             elif "lastPublishedDate" in news_item["meta_data"]:
@@ -86,10 +132,61 @@ def extract_content(dir, news_source, news_ids, label):
     return processed_data
 
 
+def create_experiment_data(experimentfolds):
+    '''
+    Sort based on published date, seperate each dataset into 80% of training, 20% testing
+    Apply 5-fold cross validation sets from training set.
+    '''
+    experimentfolds = Path(experimentfolds)
+    experimentfolds.mkdir(parents=True, exist_ok=True)
+    split_train_test(experimentfolds, 'fakehealth', 'Data/Processed/FakeHealth.tsv')
+    split_train_test(experimentfolds, 'politifact', 'Data/Processed/FakeNewsNet_Politifact.tsv')
+    split_train_test(experimentfolds, 'gossipcop', 'Data/Processed/FakeNewsNet_Gossipcop.tsv')
+
+
+def split_train_test(experimentfolds, experiment_folder, datapath):
+    data = pd.read_csv(datapath, sep="\t")
+    data = data.sort_values(by='publish_date')
+    test_index = len(data) // 5
+    train_index = len(data) - test_index
+    test_path = experimentfolds / experiment_folder
+    train_path = experimentfolds / experiment_folder
+    test = data[-test_index:]
+    train = data[:train_index]
+    assert len(test) == test_index
+    assert len(train) + len(test) == len(data)
+    test_path.mkdir(parents=True, exist_ok=True)
+    test.to_csv(test_path / 'test.tsv', sep="\t", index=False)
+
+    kf = KFold(n_splits=5, random_state=42, shuffle=True)
+    kf.get_n_splits(train)
+
+    train_fname = 'train_{}.tsv'
+    dev_fname = 'dev_{}.tsv'
+    train.reset_index(inplace = True)
+    for idx, (train_index, test_index) in enumerate(kf.split(train.label)):
+        _train, _dev = train.loc[train_index], train.loc[test_index]
+        _train.to_csv(train_path / train_fname.format(idx), sep="\t", index=False)
+        _dev.to_csv(train_path / dev_fname.format(idx), sep="\t", index=False)
+
+
+def process_nela(nela2017_path, nela2018_path, label_path):
+    pass
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--fakehealth', type=str, help="Directory path of FakeHealth")
+    parser.add_argument('--fakenewsnet', type=str, help="Directory path of FakeNewsNet")
+    parser.add_argument('--experimentfolds', type=str, help="Directory path of FakeNewsNet",
+                        default='Data/ExperimentFolds')
     args = parser.parse_args()
 
     if args.fakehealth:
         process_fakehealth(args.fakehealth)
+
+    if args.fakenewsnet:
+        process_fakenewsnet(args.fakenewsnet)
+
+    if args.experimentfolds:
+        create_experiment_data(args.experimentfolds)
