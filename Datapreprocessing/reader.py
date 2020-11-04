@@ -149,14 +149,13 @@ def split_train_test(experimentfolds, experiment_folder, datapath):
     data = data.sort_values(by='publish_date')
     test_index = len(data) // 5
     train_index = len(data) - test_index
-    test_path = experimentfolds / experiment_folder
-    train_path = experimentfolds / experiment_folder
+    output_path = experimentfolds / experiment_folder
     test = data[-test_index:]
     train = data[:train_index]
     assert len(test) == test_index
     assert len(train) + len(test) == len(data)
-    test_path.mkdir(parents=True, exist_ok=True)
-    test.to_csv(test_path / 'test.tsv', sep="\t", index=False)
+    output_path.mkdir(parents=True, exist_ok=True)
+    test.to_csv(output_path / 'test.tsv', sep="\t", index=False)
 
     kf = KFold(n_splits=5, random_state=42, shuffle=True)
     kf.get_n_splits(train)
@@ -166,8 +165,8 @@ def split_train_test(experimentfolds, experiment_folder, datapath):
     train.reset_index(inplace = True)
     for idx, (train_index, test_index) in enumerate(kf.split(train.label)):
         _train, _dev = train.loc[train_index], train.loc[test_index]
-        _train.to_csv(train_path / train_fname.format(idx), sep="\t", index=False)
-        _dev.to_csv(train_path / dev_fname.format(idx), sep="\t", index=False)
+        _train.to_csv(output_path / train_fname.format(idx), sep="\t", index=False)
+        _dev.to_csv(output_path / dev_fname.format(idx), sep="\t", index=False)
 
 
 def process_nela(nela2017_path, nela2018_path, label_path):
