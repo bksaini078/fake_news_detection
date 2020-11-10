@@ -1,11 +1,12 @@
 import argparse
 import json
+import sqlite3
 from datetime import datetime
+from pathlib import Path
 
 import dateutil.parser as dparser
 import pandas as pd
 from langdetect import detect
-from pathlib import Path
 from sklearn.model_selection import KFold
 
 from logger import logger
@@ -162,15 +163,81 @@ def split_train_test(experimentfolds, experiment_folder, datapath):
 
     train_fname = 'train_{}.tsv'
     dev_fname = 'dev_{}.tsv'
-    train.reset_index(inplace = True)
+    train.reset_index(inplace=True)
     for idx, (train_index, test_index) in enumerate(kf.split(train.label)):
         _train, _dev = train.loc[train_index], train.loc[test_index]
         _train.to_csv(output_path / train_fname.format(idx), sep="\t", index=False)
         _dev.to_csv(output_path / dev_fname.format(idx), sep="\t", index=False)
 
 
-def process_nela(nela2017_path, nela2018_path, label_path):
-    pass
+def normalize_source(source):
+    source = source.replace(' ', '')
+    source = source.lower()
+    return source
+
+
+def process_nela(nela_path):
+    nela_dir = Path(nela_path)
+    labels = pd.read_csv(nela_dir / 'labels.csv')
+    reliable_sources = labels[labels['aggregated_label'] == 0.0]['source'].unique()
+    unreliable_sources = labels[labels['aggregated_label'] == 2.0]['source'].unique()
+    satire_sources = labels[labels['Media Bias / Fact Check, label'] == 'satire']['source'].unique()
+
+    nela_2018_dir = nela_dir / 'NELA-2018/articles.db'
+    nela_2018_cnx = sqlite3.connect(nela_2018_dir)
+    nela_2018 = pd.read_sql_query("SELECT * FROM articles", nela_2018_cnx)
+
+    nela_2018["normalized_source"] = nela_2018.source.map(lambda x: normalize_source(x))
+    nela_2018 = nela_2018[["normalized_source", "name", "content", "date"]]
+    nela_2018.rename(
+        columns={"normalized_source": "source", "name": "title", "content": "text", "date": "published_date"},
+        errors="raise", inplace = True)
+
+    reliable_nela_2018 = nela_2018[nela_2018.source.isin(reliable_sources)]
+    unreliable_nela_2018 = nela_2018[nela_2018.source.isin(unreliable_sources)]
+    satire_nela_2018 = nela_2018[nela_2018.source.isin(satire_sources)]
+
+    logger.info(f"Reliable news in NELA 2018 {len(reliable_nela_2018)}")
+    logger.info(f"Unreliable news in NELA 2018 {len(unreliable_nela_2018)}")
+    logger.info(f"Satire news in NELA 2018 {len(satire_nela_2018)}")
+
+    nela_2017_dir = nela_dir / 'NELA-2017'
+    nela_2017 = []
+    for file_path in nela_2017_dir.glob('**/*.txt'):
+        with open(file_path) as f:
+            json_txt = f.read()
+            try:
+                article_dict = json.loads(json_txt)
+            except json.decoder.JSONDecodeError:
+                continue
+
+            normalized_source = normalize_source(article_dict["source"])
+            nela_2017.append({
+                "title": article_dict["title"],
+                "text": article_dict["content"],
+                "source": normalized_source,
+                "publish_date": str(file_path.absolute()).split("/")[10]
+            })
+
+    nela_2017 = pd.DataFrame(nela_2017)
+    reliable_nela_2017 = nela_2017[nela_2017.source.isin(reliable_sources)]
+    unreliable_nela_2017 = nela_2017[nela_2017.source.isin(unreliable_sources)]
+    satire_nela_2017 = nela_2017[nela_2017.source.isin(satire_sources)]
+
+    nela_all = pd.concat([nela_2017, nela_2018])
+    logger.info(f"Number of samples {len(nela_all)}")
+    Path('Data/Processed').mkdir(parents=True, exist_ok=True)
+    processed_dir = Path('Data/Processed') / 'Nela_All.tsv'
+    nela_all.to_csv(processed_dir, sep='\t', index=False)
+    logger.info(f"NELA all is saved to {processed_dir}")
+
+    nela_mix = pd.concat(
+        [reliable_nela_2017, reliable_nela_2018, unreliable_nela_2017, unreliable_nela_2018, satire_nela_2017,
+         satire_nela_2018])
+    logger.info(f"Number of samples {len(nela_all)}")
+    processed_dir = Path('Data/Processed') / 'Nela_Mix.tsv'
+    nela_mix.to_csv(processed_dir, sep='\t', index=False)
+    logger.info(f"NELA mix is saved to {processed_dir}")
 
 
 if __name__ == '__main__':
@@ -179,6 +246,7 @@ if __name__ == '__main__':
     parser.add_argument('--fakenewsnet', type=str, help="Directory path of FakeNewsNet")
     parser.add_argument('--experimentfolds', type=str, help="Directory path of FakeNewsNet",
                         default='Data/ExperimentFolds')
+    parser.add_argument('--nela', type=str, help="Directory path of NELA datasets")
     args = parser.parse_args()
 
     if args.fakehealth:
@@ -189,3 +257,6 @@ if __name__ == '__main__':
 
     if args.experimentfolds:
         create_experiment_data(args.experimentfolds)
+
+    if args.nela:
+        process_nela(args.nela)

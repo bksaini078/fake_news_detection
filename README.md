@@ -17,7 +17,7 @@ For our paper, we use the following datasets:
 ## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.The reports also generated from dataset2
 
 ## Starting
-
+Python compiler is `3.7.9`.
 Install libraries in requirements.txt:
 ```console
 pip3 install -r requirements.txt
