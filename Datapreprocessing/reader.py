@@ -31,6 +31,11 @@ def process_fakenewsnet(path: str):
             data["content"] = content["text"]
             data["title"] = content["title"]
             data["publish_date"] = content["publish_date"]
+            if not data["publish_date"]:
+                continue
+            else:
+                data["publish_date"] = datetime.fromtimestamp(data["publish_date"]).strftime("%Y-%m-%d")
+
             data["url"] = content["url"]
             filepath = str(filepath)
             data["news_id"] = filepath
@@ -43,10 +48,12 @@ def process_fakenewsnet(path: str):
 
     logger.info("Stats of Gossipcop")
     gossipcop = pd.DataFrame(gossipcop)
+    gossipcop.dropna(subset=['publish_date'], inplace=True)  # remove nan values
     logger.info(gossipcop.groupby(["label"])["url"].count())
 
     logger.info("Stats of Politifact")
     politifact = pd.DataFrame(politifact)
+    politifact.dropna(subset=['publish_date'], inplace=True)  # remove nan values
     logger.info(politifact.groupby(["label"])["url"].count())
 
     Path('Data/Processed').mkdir(parents=True, exist_ok=True)
@@ -147,14 +154,15 @@ def create_experiment_data(experimentfolds):
 
 def split_train_test(experimentfolds, experiment_folder, datapath):
     data = pd.read_csv(datapath, sep="\t")
-    data = data.sort_values(by='publish_date')
-    test_index = len(data) // 5
+    data = data.sort_values(by='publish_date', ascending=True)
+    test_index = len(data) // 5 + 1
     train_index = len(data) - test_index
     output_path = experimentfolds / experiment_folder
-    test = data[-test_index:]
-    train = data[:train_index]
-    assert len(test) == test_index
+    test = data[train_index+1:]
+    train = data[:train_index+1]
+
     assert len(train) + len(test) == len(data)
+
     output_path.mkdir(parents=True, exist_ok=True)
     test.to_csv(output_path / 'test.tsv', sep="\t", index=False)
 
@@ -164,18 +172,24 @@ def split_train_test(experimentfolds, experiment_folder, datapath):
     unlabeled_all = pd.read_csv("Data/Processed/Nela_All.tsv", sep="\t")
     unlabeled_mix = pd.read_csv("Data/Processed/Nela_Mix.tsv", sep="\t")
 
+    date_threshold = min(test["publish_date"])
+
+    _unlabeled_all = unlabeled_all[unlabeled_all["publish_date"] < date_threshold]
+    _unlabeled_mix = unlabeled_mix[unlabeled_mix["publish_date"] < date_threshold]
+
+    assert max(_unlabeled_all["publish_date"]) < date_threshold
+    assert max(_unlabeled_mix["publish_date"]) < date_threshold
+    for i in train["publish_date"].values:
+        assert i <= date_threshold
+
+    _unlabeled_all.to_csv(output_path / 'unlabeled_all.tsv', sep="\t", index=False)
+    _unlabeled_mix.to_csv(output_path / 'unlabeled_mix.tsv', sep="\t", index=False)
+
     train_fname = 'train_{}.tsv'
     dev_fname = 'dev_{}.tsv'
-    unlabeled_all_fname = 'unlabeled_all_{}.tsv'
-    unlabeled_mix_fname = 'unlabeled_mix_{}.tsv'
     train.reset_index(inplace=True)
     for idx, (train_index, test_index) in enumerate(kf.split(train.label)):
         _train, _dev = train.loc[train_index], train.loc[test_index]
-        threshold_date = max(_train.publish_date)
-        _unlabeled_all = unlabeled_all[unlabeled_all["publish_date"] < threshold_date]
-        _unlabeled_mix = unlabeled_mix[unlabeled_mix["publish_date"] < threshold_date]
-        _unlabeled_all.to_csv(output_path / unlabeled_all_fname.format(idx), sep="\t", index=False)
-        _unlabeled_mix.to_csv(output_path / unlabeled_mix_fname.format(idx), sep="\t", index=False)
         _train.to_csv(output_path / train_fname.format(idx), sep="\t", index=False)
         _train.to_csv(output_path / train_fname.format(idx), sep="\t", index=False)
         _dev.to_csv(output_path / dev_fname.format(idx), sep="\t", index=False)
