@@ -18,7 +18,7 @@ For our paper, we use the following datasets:
 Run the [bash code](scripts/data_processing.sh) in order to get experiment folds.
 
 You are supposed to see the processed files in `Data` folder
-![images/folder_dir.png]
+![ddata_directory](images/folder_dir.png)
 ## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.The reports also generated from dataset2
 
 ## Starting
