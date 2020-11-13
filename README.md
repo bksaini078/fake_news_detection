@@ -14,6 +14,11 @@ For our paper, we use the following datasets:
 * [NELA](https://dataverse.harvard.edu/dataverse/nela), [NELA-2017](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZCXSKG) and [NELA-2018](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ULHLCB) are used for unlabeled samples. From the [NELA-2019]() dataset, we use the aggregated labels. 
 
 :warning: Please cite the papers of these studies if you use them. 
+
+Run the [bash code](scripts/data_processing.sh) in order to get experiment folds.
+
+You are supposed to see the processed files in `Data` folder
+![images/folder_dir.png]
 ## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.The reports also generated from dataset2
 
 ## Starting
