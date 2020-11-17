@@ -1,14 +1,28 @@
-# False Article Detection With Weakly Supervised Learning
+# Fake News Detection With Semi Supervised Learning
 
 This contains the code for detecting the false article detection using weakly supervised learning. 
 
 Due to storage constraint, we are not able to load many files such as embedding.model, glove, etc. We have kept them in 
 [Google drive](https://drive.google.com/drive/folders/1qbpFysqLRYo_UchAIeTa-hGMHahNsOed?usp=sharing)
 
+## Datasets
+
+For our paper, we use the following datasets:
+
+* [FakeNewsNet](https://github.com/KaiDMML/FakeNewsNet) contains news articles in politics and entertainment.
+* [FakeHealth](https://zenodo.org/record/3862989) contains news articles in health.
+* [NELA](https://dataverse.harvard.edu/dataverse/nela), [NELA-2017](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZCXSKG) and [NELA-2018](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ULHLCB) are used for unlabeled samples. From the [NELA-2019]() dataset, we use the aggregated labels. 
+
+:warning: Please cite the papers of these studies if you use them. 
+
+Run the [bash code](scripts/data_processing.sh) in order to get experiment folds.
+
+You are supposed to see the processed files in `Data` folder
+![ddata_directory](images/folder_dir.png)
 ## The Data\Input2 is the dataset on which overall comparision have been done and it is default dataset for model.The reports also generated from dataset2
 
 ## Starting
-
+Python compiler is `3.7.9`.
 Install libraries in requirements.txt:
 ```console
 pip3 install -r requirements.txt
